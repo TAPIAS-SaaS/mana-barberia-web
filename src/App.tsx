@@ -382,9 +382,9 @@ export default function App() {
               </div>
             </div>
 
-            {/* Right Half: Pure Video Showcase (Only the video and the icon-only sound toggle button) */}
-            <div className="lg:col-span-6 bg-[#14171C] border-t lg:border-t-0 lg:border-l border-[#E2DCD0] relative flex items-center justify-center overflow-hidden p-0 lg:p-10">
-              <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#0E1014] lg:border lg:border-white/15 shadow-2xl">
+            {/* Right Half: Pure Video Showcase (Only the video and the icon-only sound toggle button, zero black borders) */}
+            <div className="lg:col-span-6 px-5 sm:px-12 lg:pl-4 lg:pr-16 pb-12 sm:pb-16 lg:py-20 flex items-center justify-center">
+              <div className="relative w-full aspect-video overflow-hidden border border-[#DCD5C7] shadow-[0_20px_50px_rgba(24,26,29,0.12)]">
                 <video
                   ref={heroVideoRef}
                   src="assets/aistudio/VID-20261101-WA0043_b09e1ac6.mp4"
@@ -393,7 +393,7 @@ export default function App() {
                   muted={heroMuted}
                   loop
                   playsInline
-                  className="w-full h-full object-cover object-center scale-[1.16]"
+                  className="w-full h-full object-cover object-center block"
                 />
 
                 {/* Icon-Only Sound Toggle Button */}
