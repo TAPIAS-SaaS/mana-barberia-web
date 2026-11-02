@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #FAF8F4;
+    color: #181A1D;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .font-serif-editorial {
+    font-family: var(--font-display);
+  }
+
+  .font-mono-tabular {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes fadeUpEditorial {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUpEditorial 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Smooth Editorial Scroll-Reveal System */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translate3d(0, 26px, 0);
+  transition:
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 85ms;
+}
+
+.reveal-delay-2 {
+  transition-delay: 170ms;
+}
+
+.reveal-delay-3 {
+  transition-delay: 255ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Architectural Sharp Buttons (Fígaro Colombia editorial style — zero rounded pills) */
+.btn-editorial-dark {
+  background-color: #181A1D;
+  color: #FAF8F4;
+  border: 1px solid #181A1D;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.btn-editorial-dark:hover {
+  background-color: #8C6A36;
+  border-color: #8C6A36;
+  color: #FFFFFF;
+}
+
+.btn-editorial-whatsapp {
+  background-color: #181A1D;
+  color: #FAF8F4;
+  border: 1px solid #181A1D;
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.btn-editorial-whatsapp:hover {
+  background-color: #187A40;
+  border-color: #187A40;
+  color: #FFFFFF;
+}
+
+.btn-editorial-light {
+  background-color: #FAF8F4;
+  color: #181A1D;
+  border: 1px solid #FAF8F4;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.btn-editorial-light:hover {
+  background-color: #C5A065;
+  border-color: #C5A065;
+  color: #181A1D;
+}
+
+.btn-editorial-outline {
+  background-color: transparent;
+  color: #181A1D;
+  border: 1px solid #181A1D;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.btn-editorial-outline:hover {
+  background-color: #181A1D;
+  color: #FAF8F4;
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Maná Barbería — Estilo, Precisión y Confianza",
+  "description": "Plataforma web oficial de Maná Barbería en San José del Guaviare: reserva de citas por WhatsApp, catálogo de servicios, experiencia 3D interactiva, testimonios en video y recordatorios de citas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
