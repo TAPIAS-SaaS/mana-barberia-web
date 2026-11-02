@@ -8,8 +8,6 @@ import {
   Save,
   Volume2,
   VolumeX,
-  Play,
-  Pause,
   Navigation,
   ArrowDown,
 } from 'lucide-react';
@@ -123,19 +121,19 @@ const VISUAL_PILLARS = [
     id: 'pillar-corte',
     title: 'Corte & estilo',
     subtitle: 'Degradados limpios, tijera y contornos a navaja',
-    imgSrc: '/assets/aistudio/IMG-20261101-WA0033_84c0d217.jpg',
+    imgSrc: 'assets/aistudio/IMG-20261101-WA0033_84c0d217.jpg',
   },
   {
     id: 'pillar-barba',
     title: 'Barba & navaja',
     subtitle: 'Perfilado simétrico con apertura de poros en vapor ozono',
-    imgSrc: '/assets/aistudio/IMG-20261101-WA0035_69a59250.jpg',
+    imgSrc: 'assets/aistudio/IMG-20261101-WA0035_69a59250.jpg',
   },
   {
     id: 'pillar-espacio',
     title: 'Ritual facial & sede',
     subtitle: 'Instalaciones climatizadas frente a Empoaguas',
-    imgSrc: '/assets/aistudio/IMG-20261101-WA0034_315726ac.jpg',
+    imgSrc: 'assets/aistudio/IMG-20261101-WA0034_315726ac.jpg',
   },
 ];
 
@@ -150,7 +148,6 @@ export default function App() {
   // Hero "Conoce Nuestra Sede" Video State
   const heroVideoRef = useRef<HTMLVideoElement | null>(null);
   const [heroMuted, setHeroMuted] = useState<boolean>(true);
-  const [heroPlaying, setHeroPlaying] = useState<boolean>(true);
 
   const visibleServices = filterServicesByCategory(services, serviceTab);
   const mainWhatsAppUrl = buildDirectWhatsAppUrl();
@@ -189,19 +186,6 @@ export default function App() {
     setHeroMuted(v.muted);
   };
 
-  const toggleHeroPlay = () => {
-    const v = heroVideoRef.current;
-    if (!v) return;
-    if (v.paused) {
-      v.play()
-        .then(() => setHeroPlaying(true))
-        .catch(() => {});
-    } else {
-      v.pause();
-      setHeroPlaying(false);
-    }
-  };
-
   const handleTogglePriceEditor = () => {
     if (!isEditingPrices) {
       const drafts: Record<string, string> = {};
@@ -228,20 +212,20 @@ export default function App() {
           STICKY EDITORIAL HEADER (Architectural Fígaro Style — Zero curves)
          ===================================================================== */}
       <header className="sticky top-0 z-40 bg-[#FAF8F4]/95 backdrop-blur-md border-b border-[#E2DCD0]">
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
+        <div className="max-w-[1360px] mx-auto px-3.5 sm:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
           {/* Brand Crest & Wordmark */}
           <a
             href="#"
-            className="flex items-center gap-2.5 text-[#181A1D] whitespace-nowrap shrink-0"
+            className="flex items-center gap-2 sm:gap-2.5 text-[#181A1D] shrink-0 min-w-0"
           >
-            <div className="w-8 h-8 border border-[#181A1D] flex items-center justify-center shrink-0">
-              <Scissors className="w-4 h-4 text-[#181A1D] -rotate-45" />
+            <div className="w-7 h-7 sm:w-8 sm:h-8 border border-[#181A1D] flex items-center justify-center shrink-0">
+              <Scissors className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#181A1D] -rotate-45" />
             </div>
-            <div className="flex flex-col">
-              <span className="font-serif-editorial text-xl sm:text-2xl font-bold tracking-[0.12em] uppercase leading-none">
+            <div className="flex flex-col min-w-0">
+              <span className="font-serif-editorial text-base sm:text-2xl font-bold tracking-[0.07em] sm:tracking-[0.12em] uppercase leading-none truncate">
                 MANÁ BARBERÍA
               </span>
-              <span className="text-[9px] tracking-[0.22em] uppercase text-[#78736A] mt-0.5">
+              <span className="text-[8px] sm:text-[9px] tracking-[0.13em] sm:tracking-[0.22em] uppercase text-[#78736A] mt-0.5 truncate">
                 San José del Guaviare
               </span>
             </div>
@@ -269,16 +253,16 @@ export default function App() {
             </a>
           </nav>
 
-          {/* Official WhatsApp Button (Sharp Architectural Style) */}
+          {/* Official WhatsApp Button (Properly sized for mobile & desktop) */}
           <div className="flex items-center shrink-0">
             <a
               href={mainWhatsAppUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Contactar a Maná Barbería por WhatsApp"
-              className="btn-editorial-whatsapp px-4 sm:px-5 py-2.5 text-[11px] tracking-[0.16em] uppercase font-semibold inline-flex items-center gap-2 whitespace-nowrap shrink-0"
+              className="btn-editorial-whatsapp px-3 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-[11px] tracking-[0.1em] sm:tracking-[0.16em] uppercase font-semibold inline-flex items-center gap-1.5 sm:gap-2 whitespace-nowrap shrink-0"
             >
-              <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
+              <WhatsAppIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#25D366] shrink-0" />
               <span>WhatsApp</span>
             </a>
           </div>
@@ -330,12 +314,12 @@ export default function App() {
                   de <strong>4.7 ★ estrellas</strong> respaldan nuestro trabajo.
                 </p>
 
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-10">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 mb-10">
                   <a
                     href={mainWhatsAppUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-editorial-whatsapp px-7 py-4 text-xs tracking-[0.18em] uppercase font-semibold inline-flex items-center justify-center gap-3 whitespace-nowrap shrink-0"
+                    className="btn-editorial-whatsapp w-full sm:w-auto px-4 sm:px-7 py-3.5 sm:py-4 text-[11px] sm:text-xs tracking-[0.08em] sm:tracking-[0.16em] uppercase font-semibold inline-flex items-center justify-center gap-2.5 text-center"
                   >
                     <WhatsAppIcon className="w-4 h-4 text-[#25D366] shrink-0" />
                     <span>WhatsApp Directo · 322 425 0545</span>
@@ -343,7 +327,7 @@ export default function App() {
 
                   <a
                     href="#servicios"
-                    className="btn-editorial-outline px-6 py-4 text-xs tracking-[0.18em] uppercase font-semibold inline-flex items-center justify-center gap-2 whitespace-nowrap shrink-0"
+                    className="btn-editorial-outline w-full sm:w-auto px-4 sm:px-6 py-3.5 sm:py-4 text-[11px] sm:text-xs tracking-[0.1em] sm:tracking-[0.16em] uppercase font-semibold inline-flex items-center justify-center gap-2 text-center"
                   >
                     <span>Ver Servicios y Combos</span>
                   </a>
@@ -398,87 +382,34 @@ export default function App() {
               </div>
             </div>
 
-            {/* Right Half: Architectural Full-Bleed "Conoce Nuestra Sede" Video Showcase (6 cols)
-                Zero curves (rounded-none) — On mobile it uses a crisp 16:10 architectural stage cropping out baked-in black bars */}
-            <div className="lg:col-span-6 bg-[#14171C] border-t lg:border-t-0 lg:border-l border-[#E2DCD0] flex flex-col justify-between relative lg:min-h-full">
-              {/* Top Architectural Control Bar */}
-              <div className="relative z-10 px-4 sm:px-6 py-3.5 lg:p-6 flex items-center justify-between gap-2 bg-[#14171C] lg:bg-transparent border-b border-white/10 lg:border-b-0">
-                <span className="text-[10px] sm:text-[11px] tracking-[0.18em] uppercase font-semibold text-[#FAF8F4] bg-[#181A1D]/85 px-2.5 sm:px-3 py-1.5 border border-white/20 whitespace-nowrap">
-                  <span className="sm:hidden">Nuestra Sede</span>
-                  <span className="hidden sm:inline">Conoce Nuestra Sede</span>
-                </span>
-
-                <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                  <button
-                    type="button"
-                    onClick={toggleHeroPlay}
-                    className="px-3 py-1.5 bg-[#181A1D]/85 hover:bg-[#8C6A36] text-[#FAF8F4] border border-white/25 text-[10px] tracking-[0.16em] uppercase font-semibold inline-flex items-center gap-1.5 transition-colors whitespace-nowrap"
-                  >
-                    {heroPlaying ? (
-                      <>
-                        <Pause className="w-3 h-3" />
-                        <span>Pausar</span>
-                      </>
-                    ) : (
-                      <>
-                        <Play className="w-3 h-3" />
-                        <span>Reproducir</span>
-                      </>
-                    )}
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={toggleHeroSound}
-                    aria-label={heroMuted ? 'Activar sonido del video de sede' : 'Silenciar video'}
-                    className="px-3 py-1.5 bg-[#181A1D]/85 hover:bg-[#8C6A36] text-[#FAF8F4] border border-white/25 text-[10px] tracking-[0.16em] uppercase font-semibold inline-flex items-center gap-1.5 transition-colors whitespace-nowrap"
-                  >
-                    {heroMuted ? (
-                      <>
-                        <VolumeX className="w-3 h-3 text-[#C5A065]" />
-                        <span>Audio</span>
-                      </>
-                    ) : (
-                      <>
-                        <Volume2 className="w-3 h-3 text-[#25D366]" />
-                        <span>Sonido ON</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-              </div>
-
-              {/* Architectural Video Stage:
-                  - Mobile (< lg): Sharp 16:10 frame with scale-[1.15] so baked-in black bars are cropped out 100%.
-                  - Desktop (lg:): Full-bleed edge-to-edge architectural column. */}
-              <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] overflow-hidden lg:aspect-auto lg:absolute lg:inset-0 lg:w-full lg:h-full bg-[#0E1014]">
+            {/* Right Half: Pure Video Showcase (Only the video and the icon-only sound toggle button) */}
+            <div className="lg:col-span-6 bg-[#14171C] border-t lg:border-t-0 lg:border-l border-[#E2DCD0] relative flex items-center justify-center overflow-hidden p-0 lg:p-10">
+              <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#0E1014] lg:border lg:border-white/15 shadow-2xl">
                 <video
                   ref={heroVideoRef}
-                  src="/assets/aistudio/VID-20261101-WA0043_b09e1ac6.mp4"
-                  poster="/assets/aistudio/IMG-20261101-WA0034_315726ac.jpg"
+                  src="assets/aistudio/VID-20261101-WA0043_b09e1ac6.mp4"
+                  poster="assets/aistudio/IMG-20261101-WA0034_315726ac.jpg"
                   autoPlay
                   muted={heroMuted}
                   loop
                   playsInline
-                  onPlay={() => setHeroPlaying(true)}
-                  onPause={() => setHeroPlaying(false)}
-                  className="w-full h-full object-cover object-center max-lg:scale-[1.15]"
+                  className="w-full h-full object-cover object-center scale-[1.16]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/35 pointer-events-none" />
-              </div>
 
-              {/* Bottom Architectural Caption */}
-              <div className="relative z-10 px-5 sm:px-6 py-5 lg:p-8 bg-[#14171C] lg:bg-transparent border-t border-white/10 lg:border-t-0">
-                <p className="text-[10px] tracking-[0.2em] uppercase text-[#C5A065] font-semibold mb-1">
-                  Recorrido Oficial · San José del Guaviare
-                </p>
-                <div className="text-2xl sm:text-3xl font-serif-editorial font-medium text-[#FAF8F4]">
-                  Frente a Empoaguas · Carrera 19D # 19-10
-                </div>
-                <p className="text-xs sm:text-sm text-[#D5D0C5] mt-1 max-w-md">
-                  Conoce en video nuestra ubicación exacta, estaciones de barbería e instalaciones
-                  climatizadas.
-                </p>
+                {/* Icon-Only Sound Toggle Button */}
+                <button
+                  type="button"
+                  onClick={toggleHeroSound}
+                  aria-label={heroMuted ? 'Activar sonido del video' : 'Silenciar video'}
+                  title={heroMuted ? 'Activar sonido' : 'Silenciar'}
+                  className="absolute bottom-3.5 right-3.5 sm:bottom-4 sm:right-4 z-20 w-10 h-10 sm:w-11 sm:h-11 bg-[#181A1D]/85 hover:bg-[#8C6A36] text-[#FAF8F4] border border-white/25 flex items-center justify-center transition-colors shadow-lg"
+                >
+                  {heroMuted ? (
+                    <VolumeX className="w-4 h-4 sm:w-5 sm:h-5 text-[#FAF8F4]" />
+                  ) : (
+                    <Volume2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366]" />
+                  )}
+                </button>
               </div>
             </div>
           </div>
@@ -881,14 +812,14 @@ export default function App() {
                 </h2>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 shrink-0">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 shrink-0">
                 <a
                   href={mainWhatsAppUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-editorial-light px-7 py-4 text-xs tracking-[0.18em] uppercase font-semibold inline-flex items-center justify-center gap-2.5 whitespace-nowrap"
+                  className="btn-editorial-light px-4 sm:px-7 py-3.5 sm:py-4 text-[11px] sm:text-xs tracking-[0.1em] sm:tracking-[0.18em] uppercase font-semibold inline-flex items-center justify-center gap-2 text-center"
                 >
-                  <WhatsAppIcon className="w-4 h-4 text-[#187A40]" />
+                  <WhatsAppIcon className="w-4 h-4 text-[#187A40] shrink-0" />
                   <span>WhatsApp · 322 425 0545</span>
                 </a>
 
@@ -896,20 +827,20 @@ export default function App() {
                   href="https://www.google.com/maps/search/?api=1&query=Carrera+19D+19-10+San+Jose+del+Guaviare+Colombia"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-4 text-xs tracking-[0.18em] uppercase font-semibold border border-white/35 text-[#FAF8F4] hover:bg-white/10 inline-flex items-center justify-center gap-2 transition-colors whitespace-nowrap"
+                  className="px-4 sm:px-6 py-3.5 sm:py-4 text-[11px] sm:text-xs tracking-[0.1em] sm:tracking-[0.18em] uppercase font-semibold border border-white/35 text-[#FAF8F4] hover:bg-white/10 inline-flex items-center justify-center gap-2 transition-colors text-center"
                 >
-                  <Navigation className="w-3.5 h-3.5" />
+                  <Navigation className="w-3.5 h-3.5 shrink-0" />
                   <span>Abrir en Google Maps</span>
                 </a>
               </div>
             </div>
 
             {/* Architectural Location Details & Street Reference Map */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-12 items-stretch">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 pt-10 sm:pt-12 items-stretch">
               {/* Left: Architectural Street Plan Diagram (7 cols) */}
               <div
                 data-scroll-reveal
-                className="reveal-on-scroll lg:col-span-7 border border-white/15 bg-[#14171C] p-6 sm:p-8 flex flex-col justify-between min-h-[340px] relative overflow-hidden"
+                className="reveal-on-scroll lg:col-span-7 border border-white/15 bg-[#14171C] p-5 sm:p-8 flex flex-col justify-between min-h-[340px] relative overflow-hidden"
               >
                 <svg
                   className="absolute inset-0 w-full h-full opacity-30 pointer-events-none"
@@ -945,16 +876,16 @@ export default function App() {
                   </text>
                 </svg>
 
-                <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 text-[11px] tracking-[0.18em] uppercase text-[#C5A065]">
+                <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 text-[10px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.18em] uppercase text-[#C5A065]">
                   <span>Plano de Referencia · San José del Guaviare</span>
                   <span>Parqueadero Frente al Local</span>
                 </div>
 
-                <div className="relative z-10 my-6 bg-[#1C2026]/95 border border-[#C5A065] p-6 max-w-md">
+                <div className="relative z-10 my-6 bg-[#1C2026]/95 border border-[#C5A065] p-5 sm:p-6 max-w-md">
                   <div className="text-[10px] tracking-[0.2em] uppercase text-[#C5A065] mb-1">
                     Punto de Referencia Exacto
                   </div>
-                  <div className="text-2xl font-serif-editorial font-medium text-[#FAF8F4]">
+                  <div className="text-xl sm:text-2xl font-serif-editorial font-medium text-[#FAF8F4]">
                     Frente a EMPOAGUAS · Carrera 19D # 19-10
                   </div>
                   <p className="text-xs text-[#D5D0C5] mt-1.5">
@@ -971,13 +902,13 @@ export default function App() {
               {/* Right: Direct Contact & Hours Summary (5 cols) */}
               <div
                 data-scroll-reveal
-                className="reveal-on-scroll reveal-delay-1 lg:col-span-5 border border-white/15 bg-[#171B20] p-7 sm:p-8 flex flex-col justify-between"
+                className="reveal-on-scroll reveal-delay-1 lg:col-span-5 border border-white/15 bg-[#171B20] p-5 sm:p-8 flex flex-col justify-between overflow-hidden"
               >
                 <div>
                   <p className="text-[11px] tracking-[0.2em] uppercase text-[#C5A065] font-semibold mb-2">
                     Contacto Directo
                   </p>
-                  <h3 className="text-3xl font-serif-editorial font-medium text-[#FAF8F4] mb-4">
+                  <h3 className="text-2xl sm:text-3xl font-serif-editorial font-medium text-[#FAF8F4] mb-4">
                     Atención inmediata por WhatsApp
                   </h3>
                   <p className="text-xs sm:text-sm text-[#D5D0C5] leading-relaxed mb-6">
@@ -1002,20 +933,20 @@ export default function App() {
                     href={mainWhatsAppUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3.5 px-5 bg-[#25D366] hover:bg-[#1FB858] text-[#0B0D10] text-xs tracking-[0.16em] uppercase font-bold flex items-center justify-center gap-2.5 transition-colors whitespace-nowrap"
+                    className="w-full py-3.5 px-3 sm:px-5 bg-[#25D366] hover:bg-[#1FB858] text-[#0B0D10] text-[11px] sm:text-xs tracking-[0.06em] sm:tracking-[0.14em] uppercase font-bold flex items-center justify-center gap-2 transition-colors text-center"
                   >
                     <WhatsAppIcon className="w-4 h-4 shrink-0" />
-                    <span>WhatsApp Principal · 322 425 0545</span>
+                    <span className="truncate">WhatsApp Principal · 322 425 0545</span>
                   </a>
 
                   <a
                     href={secondaryWhatsAppUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3.5 px-5 border border-white/30 hover:border-[#C5A065] text-[#FAF8F4] text-xs tracking-[0.16em] uppercase font-semibold flex items-center justify-center gap-2.5 transition-colors whitespace-nowrap"
+                    className="w-full py-3.5 px-3 sm:px-5 border border-white/30 hover:border-[#C5A065] text-[#FAF8F4] text-[11px] sm:text-xs tracking-[0.06em] sm:tracking-[0.14em] uppercase font-semibold flex items-center justify-center gap-2 transition-colors text-center"
                   >
                     <WhatsAppIcon className="w-4 h-4 shrink-0" />
-                    <span>WhatsApp Línea 2 · 316 048 0297</span>
+                    <span className="truncate">WhatsApp Línea 2 · 316 048 0297</span>
                   </a>
                 </div>
               </div>
